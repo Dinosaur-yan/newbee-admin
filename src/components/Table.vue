@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineExpose, defineProps, onMounted, reactive } from 'vue'
+import { defineExpose, defineProps, onMounted, reactive, ref } from 'vue'
 import axios from '@/utils/axios'
 
 const props = defineProps({
@@ -35,12 +35,13 @@ const state = reactive({
   tableData: [],
   total: 0,
   currentPage: 1,
-  pageSize: 10,
-  multipleSelection: []
+  pageSize: 10
 })
 
+const multipleSelection = ref([])
+
 const handleSelectionChange = (val: any) => {
-  state.multipleSelection = val
+  multipleSelection.value = val
 }
 
 const getList = () => {
@@ -68,7 +69,7 @@ const changePage = (val: number) => {
 }
 
 defineExpose({
-  state,
+  multipleSelection,
   getList
 })
 </script>

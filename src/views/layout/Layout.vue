@@ -107,14 +107,15 @@ import {
   Star,
   Trophy
 } from '@element-plus/icons-vue'
+import { ref } from 'vue'
 
-let currentPath = '/'
+const currentPath = ref('/')
 
 const defaultOpen = ['1', '2', '3', '4']
 
 const router = useRouter()
 router.beforeEach((to) => {
-  currentPath = to.path
+  currentPath.value = to.path
 })
 </script>
 

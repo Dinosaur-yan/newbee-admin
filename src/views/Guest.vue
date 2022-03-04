@@ -44,13 +44,13 @@ import axios from '@/utils/axios'
 const table: any = ref(null)
 
 const handleSolve = () => {
-  if (!table.value.state.multipleSelection.length) {
+  if (!table.value.multipleSelection.length) {
     ElMessage.error('请选择项')
     return
   }
   axios
     .put(`/users/0`, {
-      ids: table.value.state.multipleSelection.map((item: any) => item.userId)
+      ids: table.value.multipleSelection.map((item: any) => item.userId)
     })
     .then(() => {
       ElMessage.success('解除成功')
@@ -60,13 +60,13 @@ const handleSolve = () => {
 }
 
 const handleForbid = () => {
-  if (!table.value.state.multipleSelection.length) {
+  if (!table.value.multipleSelection.length) {
     ElMessage.error('请选择项')
     return
   }
   axios
     .put(`/users/1`, {
-      ids: table.value.state.multipleSelection.map((item: any) => item.userId)
+      ids: table.value.multipleSelection.map((item: any) => item.userId)
     })
     .then(() => {
       ElMessage.success('禁用成功')
